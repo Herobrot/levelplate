@@ -1,0 +1,13 @@
+{
+  "itemGroup.levelplate": "Example Mod Tab",
+  "block.levelplate.example_block": "Example Block",
+  "item.levelplate.example_item": "Example Item",
+
+  "levelplate.configuration.title": "Levelplate Configs",
+  "levelplate.configuration.section.levelplate.common.toml": "Levelplate Configs",
+  "levelplate.configuration.section.levelplate.common.toml.title": "Levelplate Configs",
+  "levelplate.configuration.items": "Item List",
+  "levelplate.configuration.logDirtBlock": "Log Dirt Block",
+  "levelplate.configuration.magicNumberIntroduction": "Magic Number Text",
+  "levelplate.configuration.magicNumber": "Magic Number"
+}
