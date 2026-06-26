@@ -1,0 +1,46 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "MIT License"
+
+[[mods]]
+modId = "levelplate"
+version = "1.0.0"
+displayName = "Levelplate"
+credits = "Globox"
+authors = "Herobrot"
+description = '''
+Adds plates above mobs indicating their level
+'''
+logoFile = "assets/levelplate/icon.png"
+logoBlur = false
+
+[[mixins]]
+config = "levelplate.mixins.json"
+
+[[dependencies.levelplate]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.levelplate]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.levelplate]]
+modId = "cloth_config"
+type = "required"
+versionRange = "[15.0.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.levelplate]]
+modId = "scalingdifficulty"
+type = "required"
+versionRange = "[1.0.0,)"
+ordering = "BEFORE"
+side = "BOTH"

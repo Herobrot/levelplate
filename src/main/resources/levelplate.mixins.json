@@ -2,7 +2,14 @@
   "required": true,
   "package": "com.herobrot.levelplate.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "plugin": "com.herobrot.levelplate.mixin.compat.LevelplateMixinPlugin",
+  "mixins": [
+  ],
+  "client": [
+    "compat.GeoEntityRendererMixin",
+    "compat.GeoReplacedEntityRendererMixin",
+    "compat.TitleRenderManagerMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   },
