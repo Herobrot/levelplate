@@ -19,10 +19,10 @@
 
   "text.rpgdifficulty.title": "Rpg prueba",
   "text.levelplate.level": "§eLv.%s",
-  "text.levelplate.health": "HP: %d/%d",
+  "text.levelplate.health": "§cHP: %d/%d",
   "text.levelplate.name": "§r%s",
 
   "config.waila.plugin_levelplate": "Levelplate",
-  "config.waila.plugin_levelplate.mob_level_info": "Mob Level Info",
-  "config.jade.plugin_levelplate.mob_level_info": "Mob Level Info"
+  "config.waila.plugin_levelplate.level_info": "Mob Level Info",
+  "config.jade.plugin_levelplate.level_info": "Mob Level Info"
 }

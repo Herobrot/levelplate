@@ -61,9 +61,10 @@ public class LevelplateRender {
                 float health = mob.getHealth() / mob.getMaxHealth();
                 int healthWidth = Math.round(40 * health);
 
-                // Relleno
+                // Relleno de la barra de vida
                 if (healthWidth > 0) {
-                    poseStack.translate(0.0f, 0.0f, -0.01f);
+                    // FIX: +0.01f lo acerca a la cámara (frente al fondo negro)
+                    poseStack.translate(0.0f, 0.0f, 0.01f);
                     drawQuad(poseStack.last().pose(), vertexConsumer, -20 + healthWidth, 6, healthWidth, packedLight);
                 }
 
@@ -90,7 +91,26 @@ public class LevelplateRender {
 
             float textX = (float) (-font.width(text) / 2);
 
-            font.drawInBatch(text, textX, 0.0F, finalNameColor, true, matrix4f, buffer, Font.DisplayMode.SEE_THROUGH, bgColor, packedLight);
+            float textWidth = font.width(text);
+            float textHeight = font.lineHeight; // Usualmente 9
+            float padding = 3.0f; // Margen alrededor del texto
+
+            poseStack.pushPose();
+            // FIX: -0.01D lo empuja hacia atrás (detrás del texto)
+            poseStack.translate(0.0D, 0.0D, -0.01D);
+
+            Matrix4f bgMatrix = poseStack.last().pose();
+            VertexConsumer bgConsumer = buffer.getBuffer(RenderType.text(ICONS));
+
+            // Dibujamos el marco centrado detrás del texto
+            drawTextureRect(bgMatrix, bgConsumer,
+                    textX - padding, -padding,
+                    textWidth + (padding * 2), textHeight + (padding * 2),
+                    packedLight);
+
+            poseStack.popPose();
+
+            font.drawInBatch(text, textX, 0.0F, finalNameColor, true, matrix4f, buffer, Font.DisplayMode.SEE_THROUGH, 0, packedLight);
             font.drawInBatch(text, textX, 0.0F, finalNameColor, true, matrix4f, buffer, Font.DisplayMode.NORMAL, 0, packedLight);
 
             poseStack.popPose();
@@ -107,5 +127,17 @@ public class LevelplateRender {
         consumer.addVertex(matrix, (float) -20, (float) 6, 0.0F).setColor(255, 255, 255, 255).setUv(minU, maxV).setLight(light);
         consumer.addVertex(matrix, x2, (float) 6, 0.0F).setColor(255, 255, 255, 255).setUv(maxU, maxV).setLight(light);
         consumer.addVertex(matrix, x2, (float) 0, 0.0F).setColor(255, 255, 255, 255).setUv(maxU, minV).setLight(light);
+    }
+
+    private static void drawTextureRect(Matrix4f matrix, VertexConsumer consumer, float x, float y, float width, float height, int light) {
+        float minU = (float) 0 / 256.0F;
+        float maxU = ((float) 0 + width) / 256.0F;
+        float minV = (float) 12 / 256.0F;
+        float maxV = ((float) 12 + height) / 256.0F;
+
+        consumer.addVertex(matrix, x, y, 0.0F).setColor(255, 255, 255, 255).setUv(minU, minV).setLight(light);
+        consumer.addVertex(matrix, x, y + height, 0.0F).setColor(255, 255, 255, 255).setUv(minU, maxV).setLight(light);
+        consumer.addVertex(matrix, x + width, y + height, 0.0F).setColor(255, 255, 255, 255).setUv(maxU, maxV).setLight(light);
+        consumer.addVertex(matrix, x + width, y, 0.0F).setColor(255, 255, 255, 255).setUv(maxU, minV).setLight(light);
     }
 }

@@ -14,6 +14,7 @@ import snownee.jade.api.WailaPlugin;
 import snownee.jade.api.config.IPluginConfig;
 
 @WailaPlugin
+@SuppressWarnings("unused")
 public class JadeCompat implements IWailaPlugin {
 
     @Override
@@ -32,7 +33,7 @@ public class JadeCompat implements IWailaPlugin {
 
                 if (mobData.showLabel) {
                     // Inyectamos el nivel directamente en el HUD del cliente
-                    tooltip.add(Component.translatable("text.levelplate.level", mobData.level));
+                    tooltip.add(Component.translatable("text.levelplate.level", String.valueOf(mobData.level)));
                 }
             }
         }
