@@ -20,7 +20,6 @@ import software.bernie.geckolib.renderer.GeoReplacedEntityRenderer;
 
 @Mixin(GeoReplacedEntityRenderer.class)
 public abstract class GeoReplacedEntityRendererMixin {
-
     @Shadow(remap = false)
     protected Entity currentEntity;
 
@@ -43,7 +42,6 @@ public abstract class GeoReplacedEntityRendererMixin {
         }
     }
 
-    // Oculta el renderizado de la etiqueta base de GeckoLib para Mobs
     @Inject(method = "shouldShowName(Lnet/minecraft/world/entity/Entity;)Z", at = @At("RETURN"), cancellable = true)
     protected void shouldShowNameMixin(Entity entity, CallbackInfoReturnable<Boolean> info) {
         if (info.getReturnValue() && entity instanceof Mob) {

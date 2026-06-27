@@ -19,7 +19,6 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 @Mixin(GeoEntityRenderer.class)
 public abstract class GeoEntityRendererMixin<T extends Entity & GeoAnimatable> {
-
     @Inject(method = "renderFinal*", at = @At("HEAD"), remap = false)
     private void renderFinalMixin(PoseStack poseStack, T animatable, BakedGeoModel model, MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay, int colour, CallbackInfo info) {
         if (animatable instanceof Mob mob) {
@@ -39,7 +38,6 @@ public abstract class GeoEntityRendererMixin<T extends Entity & GeoAnimatable> {
         }
     }
 
-    // Traducción de hasLabel a shouldShowName (Mapeo Mojang)
     @Inject(method = "shouldShowName(Lnet/minecraft/world/entity/Entity;)Z", at = @At("RETURN"), cancellable = true)
     private void shouldShowNameMixin(T entity, CallbackInfoReturnable<Boolean> info) {
         if (info.getReturnValue() && entity instanceof Mob) {

@@ -3,8 +3,7 @@
   "package": "com.herobrot.levelplate.mixin",
   "compatibilityLevel": "JAVA_21",
   "plugin": "com.herobrot.levelplate.mixin.compat.LevelplateMixinPlugin",
-  "mixins": [
-  ],
+  "mixins": [],
   "client": [
     "compat.GeoEntityRendererMixin",
     "compat.GeoReplacedEntityRendererMixin",

@@ -11,13 +11,10 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderLivingEvent;
-import net.neoforged.neoforge.client.event.RenderNameTagEvent;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
-import net.neoforged.neoforge.common.util.TriState;
 
 @EventBusSubscriber(modid = Levelplate.MOD_ID, value = Dist.CLIENT)
 public class ClientEvents {
-
     public static void registerConfigScreen(ModContainer modContainer) {
         modContainer.registerExtensionPoint(IConfigScreenFactory.class, (container, parentScreen) ->
                 AutoConfig.getConfigScreen(LevelplateConfig.class, parentScreen).get());

@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 import net.neoforged.fml.loading.FMLLoader;
 
 public class LevelplateMixinPlugin implements IMixinConfigPlugin {
-
     private boolean isModLoaded(String modId) {
         return FMLLoader.getLoadingModList().getMods().stream()
                 .anyMatch(info -> info.getModId().equals(modId));

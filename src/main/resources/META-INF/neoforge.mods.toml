@@ -37,10 +37,3 @@ type = "required"
 versionRange = "[15.0.0,)"
 ordering = "AFTER"
 side = "BOTH"
-
-[[dependencies.levelplate]]
-modId = "scalingdifficulty"
-type = "required"
-versionRange = "[1.0.0,)"
-ordering = "BEFORE"
-side = "BOTH"

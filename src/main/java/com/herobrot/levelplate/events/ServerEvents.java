@@ -8,13 +8,12 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
-// Suscrito al bus del juego (GAME) para atrapar eventos de entidades/jugadores
+
 @EventBusSubscriber(modid = Levelplate.MOD_ID)
 public class ServerEvents {
-
     @SubscribeEvent
     public static void onStartTracking(PlayerEvent.StartTracking event) {
-        // Cuando un jugador empieza a trackear a un Mob, disparamos nuestra utilidad
+
         if (event.getTarget() instanceof Mob mob && event.getEntity() instanceof ServerPlayer player) {
             LevelplateTracker.startTracking(mob, player);
         }

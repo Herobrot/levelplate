@@ -15,7 +15,6 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 @Mixin(value = TitleRenderManager.class, remap = false)
 public class TitleRenderManagerMixin {
-
     @Inject(
             method = "updateBiomeTitle",
             at = @At(
@@ -25,7 +24,6 @@ public class TitleRenderManagerMixin {
     )
     private void updateBiomeTitleMixin(Level world, BlockPos playerPos, Player player, boolean isPlayerUnderground, CallbackInfo ci) {
         if (Levelplate.CONFIG.levelTitle) {
-            // Enviamos el paquete al servidor para solicitar la vida modificada del esqueleto temporal
             PacketDistributor.sendToServer(new TitlePacket(0));
         }
     }

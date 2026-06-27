@@ -16,31 +16,26 @@ import snownee.jade.api.config.IPluginConfig;
 @WailaPlugin
 @SuppressWarnings("unused")
 public class JadeCompat implements IWailaPlugin {
-
     @Override
     public void registerClient(IWailaClientRegistration registration) {
-        // Le indicamos a Jade que ejecute nuestra lógica cuando el jugador mire un Mob
         registration.registerEntityComponent(new LevelplateProvider(), Mob.class);
     }
 
     public static class LevelplateProvider implements IEntityComponentProvider {
-
         @Override
         public void appendTooltip(ITooltip tooltip, EntityAccessor accessor, IPluginConfig config) {
             if (accessor.getEntity() instanceof Mob mob) {
-                // Recuperamos el Attachment sin hacer cálculos pesados en el cliente
                 LevelplateAttachments.MobLevelData mobData = mob.getData(LevelplateAttachments.MOB_DATA);
 
                 if (mobData.showLabel) {
-                    // Inyectamos el nivel directamente en el HUD del cliente
-                    tooltip.add(Component.translatable("text.levelplate.level", String.valueOf(mobData.level)));
+                    tooltip.add(Component.translatable("text.levelplate.level", "§e" + mobData.level));
                 }
             }
         }
 
         @Override
         public ResourceLocation getUid() {
-            return ResourceLocation.fromNamespaceAndPath(Levelplate.MOD_ID, "level_info");
+            return ResourceLocation.fromNamespaceAndPath(Levelplate.MOD_ID, "mob_level_info");
         }
     }
 }

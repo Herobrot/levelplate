@@ -108,16 +108,22 @@ configurations {
 
 dependencies {
     implementation("me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}")
-    implementation("com.herobrot.scalingdifficulty:scalingdifficulty:1.0.0")
-
+    implementation("com.herobrot.scalingdifficulty:scalingdifficulty:${scalingdifficulty_version}")
 
     //Compile
     compileOnly "maven.modrinth:jade:${project.jade_version}"
     compileOnly "maven.modrinth:travelers-titles:${project.travelersTitle_version}"
     compileOnly "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
+    compileOnly "maven.modrinth:cobblemon:${cobblemon_version}"
+    compileOnly "maven.modrinth:minecraft-comes-alive-reborn:FddzQiXV"
 
     //Test
-    runtimeOnly "maven.modrinth:jade:${project.jade_version}"
+    //runtimeOnly "maven.modrinth:jade:${project.jade_version}"
+    //runtimeOnly "maven.modrinth:cobblemon:${cobblemon_version}"
+    //runtimeOnly "maven.modrinth:kotlin-for-forge:5.11.0"
+    //runtimeOnly "maven.modrinth:minecraft-comes-alive-reborn:FddzQiXV"
+    //runtimeOnly "maven.modrinth:travelers-titles:${project.travelersTitle_version}"
+    //runtimeOnly "maven.modrinth:yungs-api:1.21.1-NeoForge-5.1.6"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

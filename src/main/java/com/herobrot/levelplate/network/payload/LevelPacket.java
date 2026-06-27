@@ -7,10 +7,8 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 public record LevelPacket(int mobLevel, int mobId, boolean hasRpgLabel) implements CustomPacketPayload {
-
     public static final Type<LevelPacket> PACKET_ID = new Type<>(ResourceLocation.fromNamespaceAndPath("levelplate", "level_packet"));
 
-    // Uso correcto de StreamCodec para NeoForge 1.21.1
     public static final StreamCodec<RegistryFriendlyByteBuf, LevelPacket> STREAM_CODEC = StreamCodec.of(
             (buf, payload) -> {
                 buf.writeInt(payload.mobLevel());

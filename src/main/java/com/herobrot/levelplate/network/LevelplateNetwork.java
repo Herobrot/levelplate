@@ -20,7 +20,6 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 public class LevelplateNetwork {
-
     public static void register(final RegisterPayloadHandlersEvent event) {
         final PayloadRegistrar registrar = event.registrar(Levelplate.MOD_ID);
 
@@ -31,7 +30,6 @@ public class LevelplateNetwork {
     private static void handleTitlePacket(final TitlePacket payload, final IPayloadContext context) {
         context.enqueueWork(() -> {
             if (context.flow().isServerbound()) {
-                // Lógica del Servidor (Mojang Mappings)
                 if (context.player() instanceof ServerPlayer player) {
                     Skeleton skeleton = EntityType.SKELETON.create(player.serverLevel());
                     if (skeleton != null) {
@@ -40,18 +38,18 @@ public class LevelplateNetwork {
                         if (Levelplate.isScalingDifficultyLoaded) {
                             DifficultyCalculator.applyScaling(skeleton, player.serverLevel());
                         }
+                        String entityName = net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(skeleton.getType()).toString();
+                        context.reply(new TitlePacket(LevelplateTracker.getMobLevel(skeleton, entityName)));
 
-                        context.reply(new TitlePacket(LevelplateTracker.getMobLevel(skeleton)));
                         skeleton.discard();
                     }
                 }
             } else {
-                // Lógica del Cliente (Mantenemos Travelers Titles)
                 int mobLevel = payload.level();
                 if (TravelersTitlesCommon.titleManager.biomeTitleRenderer.displayedTitle != null) {
                     TravelersTitlesCommon.titleManager.biomeTitleRenderer.displayTitle(
                             TravelersTitlesCommon.titleManager.biomeTitleRenderer.displayedTitle,
-                            Component.translatable("text.rpgdifficulty.title", mobLevel)
+                            Component.translatable("text.scalingdifficulty.title", mobLevel)
                     );
                 }
             }
@@ -61,9 +59,9 @@ public class LevelplateNetwork {
     @SuppressWarnings("resource")
     private static void handleLevelPacket(final LevelPacket payload, final IPayloadContext context) {
         context.enqueueWork(() -> {
-            // Lógica del Cliente (Mojang Mappings)
+
             if (context.player().level().getEntity(payload.mobId()) instanceof Mob mob) {
-                // Escribimos directamente en el Attachment nativo del mob
+
                 mob.setData(LevelplateAttachments.MOB_DATA, new LevelplateAttachments.MobLevelData(payload.mobLevel(), payload.hasRpgLabel()));
             }
         });
