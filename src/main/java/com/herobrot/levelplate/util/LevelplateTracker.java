@@ -33,7 +33,7 @@ public class LevelplateTracker {
         }
 
         int level = 1;
-        if (Levelplate.isScalingDifficultyLoaded && Levelplate.CONFIG.useRpgDifficultyLvl) {
+        if (Levelplate.isScalingDifficultyLoaded && Levelplate.CONFIG.useScalingDifficultyLvl) {
             float multiplier = mob.getData(ModAttachments.DIFFICULTY_MULTIPLIER);
             if (multiplier == 0.0f) multiplier = 1.0f;
             level = (int) (Levelplate.CONFIG.levelMultiplier * multiplier - Levelplate.CONFIG.levelMultiplier);

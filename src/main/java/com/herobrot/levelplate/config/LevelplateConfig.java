@@ -30,7 +30,7 @@ public class LevelplateConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     public boolean showLevelplateIfObstructed = false;
     @ConfigEntry.Gui.Tooltip
-    public boolean useRpgDifficultyLvl = true;
+    public boolean useScalingDifficultyLvl = true;
     @ConfigEntry.Gui.Tooltip
     public boolean levelTitle = true;
     @ConfigEntry.Gui.Tooltip
