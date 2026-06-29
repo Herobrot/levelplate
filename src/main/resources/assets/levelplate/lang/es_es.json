@@ -6,6 +6,7 @@
   "text.autoconfig.levelplate.option.showHealth": "Mostrar vida",
   "text.autoconfig.levelplate.option.showLevel": "Mostrar nivel",
   "text.autoconfig.levelplate.option.renderDistance": "Distancia de renderizado",
+  "text.autoconfig.levelplate.option.showHostileOnly": "Mostrar solo hostiles",
   "text.autoconfig.levelplate.option.levelMultiplier": "Multiplicador del nivel",
   "text.autoconfig.levelplate.option.showLevelplateIfObstructed": "Mostrar Levelplate si está obstruido",
   "text.autoconfig.levelplate.option.excludedEntities": "Entidades excluidas",
