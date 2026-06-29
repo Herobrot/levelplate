@@ -108,7 +108,7 @@ configurations {
 
 dependencies {
     implementation("me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}")
-    implementation("com.herobrot.scalingdifficulty:scalingdifficulty:${scalingdifficulty_version}")
+    compileOnly("com.herobrot.scalingdifficulty:scalingdifficulty:1.0.1")
 
     //Compile
     compileOnly "maven.modrinth:jade:${project.jade_version}"
@@ -186,6 +186,21 @@ def getChangelogText() {
     return text.trim()
 }
 
+def getCurseForgeHtmlChangelog() {
+    def text = getChangelogText()
+    text = text.replaceAll('\r\n', '\n')
+
+    text = text.replaceAll(/(?m)^### (.*)$/, '<h3>$1</h3>')
+    text = text.replaceAll(/(?m)^## (.*)$/, '<h2>$1</h2>')
+    text = text.replaceAll(/(?m)^# (.*)$/, '<h1>$1</h1>')
+    text = text.replaceAll(/\*\*(.*?)\*\*/, '<strong>$1</strong>')
+    text = text.replaceAll(/`(.*?)`/, '<code>$1</code>')
+    text = text.replaceAll(/(?m)^- (.*)$/, '<li>$1</li>')
+    text = text.replaceAll(/\n/, '<br>')
+
+    return text
+}
+
 githubRelease {
     token = System.getenv("GITHUB_TOKEN") ?: ""
     owner = "Herobrot"
@@ -220,10 +235,10 @@ tasks.register('curseforge', TaskPublishCurseForge) {
 
     def uploadFile = upload(curseforge_id, jar.archiveFile.get().asFile)
 
-    uploadFile.changelog = getChangelogText().replaceAll('\n', '\n\n')
-    uploadFile.changelogType = 'markdown'
-    uploadFile.addModLoader('NeoForge')
+    uploadFile.changelog = getCurseForgeHtmlChangelog()
+    uploadFile.changelogType = 'html'
 
+    uploadFile.addModLoader('NeoForge')
     uploadFile.addGameVersion(minecraft_version)
     uploadFile.addGameVersion('Client', 'Server')
     uploadFile.addJavaVersion('Java 21')
