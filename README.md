@@ -1,25 +1,32 @@
+# Levelplate
+Levelplate is a mod and a **port** of [Nameplate](https://github.com/Globox1997/Nameplate) from **Globox** that adds level plates above mobs.
+This mod is designed to use along [ScalingDifficulty](https://github.com/Herobrot/scalingdifficulty) or any other mod that increase the HP of the mobs.
 
-Installation information
-=======
+### Installation
+Levelplate is built for [NeoForge Loader](https://neoforged.net/) and it has a dependency for [Cloth Config](https://modrinth.com/mod/cloth-config)
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+## FAQ
+### Q: Will it be a 1:1 version of the Fabric version?
+Yes and no. For now, it'll stay that way, but I plan to do my own thing while trying to keep it simple.
+### Q: What are your plans?
+Not so much for this mod at least. For now, it is:
+- Add hearts instead of a health bar
+  - Variations in Heart Styles (Hardcore or Outlined)
+### Q: Do you have permission?
+Yes!!! I talked to Globox on Discord.
+### Q: What happens to StereoWalker?
+**Context:** StereoWalker was the previous programmer responsible for porting the Globox mods to NeoForge.
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+Basically, StereoWalker has been missing for 8 months. I sent him an email on April 28, but as of this writing, I haven't received a reply.
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+### Q: Will you create a port for each Globox mod?
+Yes and no, again.
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+I definitely plan to develop a port for the following mods:
+- Nameplate (IS THIS ONE!!!!)
+- Rpgdifficulty ([FINISH :D](https://github.com/Herobrot/scalingdifficulty))
+- TieredZ ([Finish!!11!](https://github.com/Herobrot/tieredneo))
+- LevelZ
+- TravelerZ
 
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+The other mods aren't my priority... And also because I've never tried or played them in the first place, but maybe if I get enough support, I might end up learning them and creating a proper port.
