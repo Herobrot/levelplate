@@ -27,6 +27,7 @@ public class LevelplateConfig implements ConfigData {
     public boolean showLevel = true;
     @ConfigEntry.Gui.Tooltip
     public double renderDistance = 30.0;
+    public boolean showHostileOnly = false;
     @ConfigEntry.Gui.Tooltip
     public boolean showLevelplateIfObstructed = false;
     @ConfigEntry.Gui.Tooltip
@@ -38,7 +39,6 @@ public class LevelplateConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     public boolean debugMode = false;
 
-    @ConfigEntry.Gui.RequiresRestart
     @ConfigEntry.Gui.Tooltip
     public ArrayList<String> excludedEntities = new ArrayList<>(List.of("minecraft:ender_dragon", "minecraft:wither"));
 }
